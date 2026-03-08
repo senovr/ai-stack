@@ -1,0 +1,12 @@
+.env
+.venv/
+node_modules/
+__pycache__/
+*.pyc
+*.segy
+*.zip
+*.egg-info/
+dist/
+.DS_Store
+local_dev.db
+uv.lock

@@ -1,0 +1,19 @@
+[project]
+name = "ai-stack"
+version = "0.1.0"
+requires-python = ">=3.11"
+dependencies = [
+    "dataiku-api-client",
+    "clearml",
+    "opik",
+    "dspy-ai",
+    "python-dotenv",
+    "fastapi",
+    "uvicorn",
+    "requests",
+    "ruff",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"

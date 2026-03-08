@@ -1,0 +1,18 @@
+{
+  "name": "ai-stack",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "@modelcontextprotocol/server-bash": "latest",
+    "@modelcontextprotocol/server-git": "latest",
+    "@modelcontextprotocol/server-filesystem": "latest",
+    "@modelcontextprotocol/server-postgres": "latest",
+    "@modelcontextprotocol/server-puppeteer": "latest",
+    "@upstash/context7-mcp": "latest",
+    "mcp-omnisearch": "latest",
+    "firecrawl-mcp": "latest",
+    "docker-mcp": "latest",
+    "openskills": "latest",
+    "oh-my-opencode": "latest"
+  }
+}

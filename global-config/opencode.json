@@ -1,0 +1,88 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "mcp": {
+    "context7": {
+      "type": "local",
+      "command": ["npx", "-y", "@upstash/context7-mcp"],
+      "environment": { "CONTEXT7_API_KEY": "ctx7-ЗАМЕНИ" },
+      "enabled": true
+    },
+    "search": {
+      "type": "local",
+      "command": ["npx", "-y", "mcp-omnisearch"],
+      "environment": {
+        "TAVILY_API_KEY": "tvly-ЗАМЕНИ",
+        "BRAVE_API_KEY":  "BSA-ЗАМЕНИ",
+        "EXA_API_KEY":    "ЗАМЕНИ"
+      },
+      "enabled": true
+    },
+    "filesystem": {
+      "type": "local",
+      "command": ["npx", "-y", "@modelcontextprotocol/server-filesystem",
+        "/home/user/projects"
+      ],
+      "enabled": true
+    },
+    "git": {
+      "type": "local",
+      "command": ["npx", "-y", "@modelcontextprotocol/server-git"],
+      "environment": {
+        "GIT_AUTHOR_NAME":  "AIAgent",
+        "GIT_AUTHOR_EMAIL": "agent@local"
+      },
+      "enabled": true
+    },
+    "bash": {
+      "type": "local",
+      "command": ["npx", "-y", "@modelcontextprotocol/server-bash"],
+      "enabled": true
+    },
+    "firecrawl": {
+      "type": "local",
+      "command": ["npx", "-y", "firecrawl-mcp"],
+      "environment": { "FIRECRAWL_API_KEY": "fc-ЗАМЕНИ" },
+      "enabled": true
+    },
+    "puppeteer": {
+      "type": "local",
+      "command": ["npx", "-y", "@modelcontextprotocol/server-puppeteer"],
+      "enabled": true
+    },
+    "postgres": {
+      "type": "local",
+      "command": ["npx", "-y", "@modelcontextprotocol/server-postgres",
+        "postgresql://user:pass@localhost:5432/db"
+      ],
+      "enabled": false
+    },
+    "docker": {
+      "type": "local",
+      "command": ["npx", "-y", "docker-mcp"],
+      "enabled": false
+    },
+    "figma": {
+      "type": "local",
+      "command": ["npx", "-y", "@figma/mcp"],
+      "environment": { "FIGMA_PERSONAL_ACCESS_TOKEN": "figd_ЗАМЕНИ" },
+      "enabled": false
+    },
+    "gitlab": {
+      "type": "local",
+      "command": ["npx", "-y", "@modelcontextprotocol/server-gitlab"],
+      "environment": {
+        "GITLAB_PERSONAL_ACCESS_TOKEN": "glpat-ЗАМЕНИ",
+        "GITLAB_API_URL": "https://gitlab.your-company.com/api/v4"
+      },
+      "enabled": false
+    }
+  },
+  "permission": {
+    "bash": "ask",
+    "edit": "allow"
+  },
+  "compaction": {
+    "auto": true,
+    "prune": true
+  }
+}
