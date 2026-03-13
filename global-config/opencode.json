@@ -4,29 +4,29 @@
     "context7": {
       "type": "local",
       "command": ["npx", "-y", "@upstash/context7-mcp"],
-      "environment": { "CONTEXT7_API_KEY": "ctx7-ЗАМЕНИ" },
+      "environment": { 
+        "CONTEXT7_API_KEY": "{env:CONTEXT7_API_KEY}" 
+      },
       "enabled": true
     },
     "search": {
       "type": "local",
       "command": ["npx", "-y", "mcp-omnisearch"],
       "environment": {
-        "TAVILY_API_KEY": "tvly-ЗАМЕНИ",
-        "BRAVE_API_KEY":  "BSA-ЗАМЕНИ",
-        "EXA_API_KEY":    "ЗАМЕНИ"
+        "TAVILY_API_KEY": "{env:TAVILY_API_KEY}",
+        "BRAVE_API_KEY":  "{env:BRAVE_API_KEY}",
+        "EXA_API_KEY":    "{env:EXA_API_KEY}"
       },
       "enabled": true
     },
     "filesystem": {
       "type": "local",
-      "command": ["npx", "-y", "@modelcontextprotocol/server-filesystem",
-        "/home/user/projects"
-      ],
+      "command": ["npx", "-y", "github:modelcontextprotocol/servers/src/filesystem", "/home/user/projects"],
       "enabled": true
     },
     "git": {
       "type": "local",
-      "command": ["npx", "-y", "@modelcontextprotocol/server-git"],
+      "command": ["npx", "-y", "@mseep/git-mcp-server"],
       "environment": {
         "GIT_AUTHOR_NAME":  "AIAgent",
         "GIT_AUTHOR_EMAIL": "agent@local"
@@ -35,25 +35,25 @@
     },
     "bash": {
       "type": "local",
-      "command": ["npx", "-y", "@modelcontextprotocol/server-bash"],
+      "command": ["npx", "-y", "bash-mcp"],
       "enabled": true
     },
     "firecrawl": {
       "type": "local",
       "command": ["npx", "-y", "firecrawl-mcp"],
-      "environment": { "FIRECRAWL_API_KEY": "fc-ЗАМЕНИ" },
+      "environment": { 
+        "FIRECRAWL_API_KEY": "{env:FIRECRAWL_API_KEY}" 
+      },
       "enabled": true
     },
     "puppeteer": {
       "type": "local",
-      "command": ["npx", "-y", "@modelcontextprotocol/server-puppeteer"],
+      "command": ["npx", "-y", "github:modelcontextprotocol/servers/src/puppeteer"],
       "enabled": true
     },
     "postgres": {
       "type": "local",
-      "command": ["npx", "-y", "@modelcontextprotocol/server-postgres",
-        "postgresql://user:pass@localhost:5432/db"
-      ],
+      "command": ["npx", "-y", "@ahmetkca/mcp-server-postgres", "postgresql://user:pass@localhost:5432/db"],
       "enabled": false
     },
     "docker": {
@@ -64,22 +64,27 @@
     "figma": {
       "type": "local",
       "command": ["npx", "-y", "@figma/mcp"],
-      "environment": { "FIGMA_PERSONAL_ACCESS_TOKEN": "figd_ЗАМЕНИ" },
+      "environment": { 
+        "FIGMA_PERSONAL_ACCESS_TOKEN": "{env:FIGMA_PERSONAL_ACCESS_TOKEN}" 
+      },
       "enabled": false
     },
     "gitlab": {
       "type": "local",
-      "command": ["npx", "-y", "@modelcontextprotocol/server-gitlab"],
+      "command": ["npx", "-y", "github:modelcontextprotocol/servers/src/gitlab"],
       "environment": {
-        "GITLAB_PERSONAL_ACCESS_TOKEN": "glpat-ЗАМЕНИ",
-        "GITLAB_API_URL": "https://gitlab.your-company.com/api/v4"
+        "GITLAB_PERSONAL_ACCESS_TOKEN": "{env:GITLAB_PERSONAL_ACCESS_TOKEN}",
+        "GITLAB_API_URL": "{env:GITLAB_API_URL}"
       },
       "enabled": false
     }
   },
   "permission": {
-    "bash": "ask",
-    "edit": "allow"
+    "bash": "allow",
+    "edit": "allow",
+    "read": {
+      "*.env": "deny" 
+    }
   },
   "compaction": {
     "auto": true,
