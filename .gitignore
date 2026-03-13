@@ -10,3 +10,6 @@ dist/
 .DS_Store
 local_dev.db
 uv.lock
+.opencode
+.ruff_cache
+
