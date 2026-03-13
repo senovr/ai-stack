@@ -44,6 +44,12 @@ fi
 
 mkdir -p "$TARGET_DIR/skills"
 
+# Copy project templates from skill-resolver
+if [ -d "$TMP_REPO/skill-resolver/templates" ]; then
+  cp -n "$TMP_REPO/skill-resolver/templates/pyproject.toml" "$TARGET_DIR/" 2>/dev/null || true
+  cp -n "$TMP_REPO/skill-resolver/templates/prek.toml" "$TARGET_DIR/" 2>/dev/null || true
+fi
+
 # 3. Resolve Dependencies and Copy (DAG Resolution)
 ALL_SKILLS=("${SELECTED_SKILLS[@]}" "${BARE_MINIMUM[@]}")
 PROCESSED_SKILLS=()
