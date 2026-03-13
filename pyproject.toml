@@ -13,6 +13,9 @@ dependencies = [
     "requests",
 ]
 
-[tool.uv.group.dev.dependencies]
+[tool.uv]
+package = false
+
+[tool.uv.dev-dependencies]
 ruff = "0.15.5"
 ty = "0.0.22"
