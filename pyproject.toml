@@ -11,9 +11,8 @@ dependencies = [
     "fastapi",
     "uvicorn",
     "requests",
-    "ruff",
-    "ty",
 ]
 
-[tool.uv]
-package = false
+[tool.uv.group.dev.dependencies]
+ruff = "0.15.5"
+ty = "0.0.22"
