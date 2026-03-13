@@ -37,15 +37,16 @@ echo -e "${GREEN}✓ Node-пакеты установлены.${NC}"
 # Шаг 3: Конфиги и локальные глобальные навыки OpenCode
 print_step "Копирование глобальных конфигов и мета-навыков..."
 mkdir -p ~/.config/opencode/agents
-mkdir -p ~/.config/opencode/skills
+mkdir -p ~/.config/opencode/skill
 
 cp global-config/opencode.json ~/.config/opencode/opencode.json
 cp global-config/agents/global.md ~/.config/opencode/agents/global.md
 cp global-config/agents/architect.md ~/.config/opencode/agents/architect.md
 
 # Установка skill-resolver глобально, чтобы Архитектор мог его вызывать
+# Источник: папка во множественном числе (как в вашем дереве), Целевая: в единственном (нативно)
 if [ -d "global-config/skills" ]; then
-    cp -r global-config/skills/* ~/.config/opencode/skills/
+    cp -r global-config/skills/* ~/.config/opencode/skill/
 fi
 echo -e "${GREEN}✓ Конфиги и мета-навыки установлены в ~/.config/opencode/${NC}"
 
@@ -103,7 +104,6 @@ if [ -n "$mcp_choice" ]; then
     else
         IFS=' ' read -ra NUM_ARR <<< "$mcp_choice"
         for n in "${NUM_ARR[@]}"; do
-            # Проверка, что введено число в допустимом диапазоне
             if [[ "$n" =~ ^[0-9]+$ ]] && [ "$n" -ge 1 ] && [ "$n" -le "${#OPTIONAL_PLUGINS[@]}" ]; then
                 idx=$((n-1))
                 SELECTED_PLUGINS+=("${OPTIONAL_PLUGINS[$idx]}")
@@ -134,7 +134,8 @@ fi
 
 for skill in "${BARE_MINIMUM_SKILLS[@]}"; do
     echo -e "   Установка глобального навыка: ${CYAN}${skill}${NC}"
-    cp -r "$TMP_REPO/skills/$skill"* ~/.config/opencode/skills/ 2>/dev/null || true
+    # Берем из $TMP_REPO/skills/ и кладем в ~/.config/opencode/skill/
+    cp -r "$TMP_REPO/skills/$skill"* ~/.config/opencode/skill/ 2>/dev/null || true
 done
 rm -rf "$TMP_REPO"
 echo -e "${GREEN}✓ Bare Minimum навыки успешно интегрированы.${NC}"
