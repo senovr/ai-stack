@@ -12,6 +12,7 @@ dependencies = [
     "uvicorn",
     "requests",
     "ruff",
+    "ty",
 ]
 
 [tool.uv]
